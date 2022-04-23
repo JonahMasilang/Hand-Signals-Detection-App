@@ -1,0 +1,40 @@
+body {
+
+    color: white;
+    background: darkgoldenrod;
+
+}
+
+#header {
+
+    width: 80%;
+    font-size: 32px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 800;
+}
+
+.bold {
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#camera {
+
+    border: 2px dashed black;
+    width: 350px;
+    height: 350;
+
+}
+
+#object_span, #accuracy {
+
+    color: white;
+    
+}
+
+.span{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 700;
+    border-width: 2px;
+    border-style: dotted;
+}
