@@ -1,64 +1,70 @@
-
 <html>
-    <head>
-      <title>Facial Recognition Web App</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-      <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
-  
-     <link rel="stylesheet" href="style.css">
+  <head>
+    <title>Hand Signals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    https://teachablemachine.withgoogle.com/models/QibExlwZv/
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    </head>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+  <div class="container">
   
-    <body>
-    <div class="container">
-      
-  
-        <h3 id="header">FACIAL RECOGNITION WEB APP</h3>
-  
-        <br><br>
-  
-        <p style="font-size: 22px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Model is trained to identify the following people: </p>
-  
-        <b class="bold">
-          
-          Father <hr>
-  
-          Mother <hr>
-  
-          Sister <hr>
-  
-          Brother <hr>
-  
-        </b>
-  
-        <label>Webcam View - </label>
-  
-        <div id="camera"></div>
-  
-        <br><br>
-  
-        <div id="result"></div>
-  
-        <br><br>
-  
-        <button onclick="take_snapshot()" class="btn btn-info">Capture Image</button>
-  
-        <br><br>
-  
-        <button onclick="check()" class="btn btn-success">Identify image</button>
-  
-        <br><br>
-  
-        <p class="span" style="font-size: 22px;">Person :  <span id="person_span"></span></p>
-        <p class="span" Style="font-size: 22px;">Accuracy :  <span id="accuracy_span"></span></p>
-  
+    <center>
+      <h3  id="label" class="btn btn-warning heading">Hand Signals
+      <br>
+      <span>&#9757;</span>
+      <span>&#9995;</span>
+      <span>&#9996;</span>
+      <span>&#9994;</span>
+      <span>&#128076;</span>
+      <span>&#128077;</span>
+      </h3>
+
+      <br><br>
+
+      <p  id="intructions" style="font-size: 22px;">Take a selfie of a gesture in order to know its meaning.</p>
+        <br>
+        <h5>On the following gestures is this model trained on.</h5>
+        <header>
+            <span>&#128077;</span>
+            <span>&#128076;</span>
+            <span>&#9995;</span>
+        </header>
+      </p>
+
+      <div class="col-md-4 col-sm-12 col-xs-12">
+          <label>Webcam View - </label>
+          <div id="camera"></div>
+          <br><br>
+          <button onclick="take_snapshot();" class="bnt btn-warning">Capture Image</button>
+      </div>
+
+      <div  id="prediction" class="col-md-4 col-sm-12 col-xs-12">
+          <label>Prediction - </label>
+          <p class="gesture_name" id="result_gesture_name"></p>
+          <p class="gesture" id="update_gesture"></p>
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-xs-12">
+          <label>Snapshot - </label>
+          <div id="result"></div>
+          <br><br>
+          <button onclick="check();" class="btn btn-sucess">Predict Gesture</button>
+      </div>
+
+    </center>
+
     </div>
-  <script src="main.js"></script>
-  
-    </body>
-  </html>
-  
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
