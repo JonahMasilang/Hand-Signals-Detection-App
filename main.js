@@ -22,14 +22,6 @@ function modelLoaded() {
     console.log('Model Loaded');
 }
 
-function speak() {
-    var synth = window.speechSynthesis;
-    speak_data_1 = "The first prediction is" + prediction1;
-    speak_data_2 = "and the second prediction is" + prediction2;
-    var utterThis = new SpeechSynthesisUtterance(speak_data_1 + speak_data_2);
-    synth.speak(utterThis);
-}
-
 function check() {
     img =  document.getElementById("captured_image");
     classifier.classify(img, gotResult);
@@ -43,32 +35,43 @@ function gotResult(error,results) {
     else {
         console.log(results);
 
-        document.getElementById("result_emotion_name").innerHTML = results[0].label;
-        document.getElementById("result_emotion_name2").innerHTML = results[1].label;
+        document.getElementById("result_gesture_name").innerHTML = results[0].label;
         prediction1 = results[0].label;
-        prediction2 = results[1].label;
 
-        speak();
+        toSpeak = "";
 
-        if(results[0].label == "Okay") {
-            document.getElementById("update_emoji").innerHTML = "&#128076;";
-
+        if(prediction1 == "Okay") {
+            toSpeak = "This is looking okay.";
+            document.getElementById("update_gesture").innerHTML = "&#128076;";
         }
 
-        if(results[0].label == "Thumbs Up") {
-            document.getElementById("update_emoji").innerHTML = "&#128077;"; 
+        else if(prediction1 == "Thumbs Up") {
+            toSpeak = "All the best!";
+            document.getElementById("update_gesture").innerHTML = "&#128077;"; 
         }  
         
-        if(results[0].label == "Fist") {
-            document.getElementById("update_emoji").innerHTML = "&#9994;";
+        else if(prediction1 == "Fist") {
+            toSpeak = "Awesome!";
+            document.getElementById("update_gesture").innerHTML = "&#9994;";
         }
 
-        if(results[0].label == "Two Fingers") {
-            document.getElementById("update_emoji").innerHTML = "&#9996;";
+        else if(prediction1 == "Two Fingers") {
+            toSpeak = "Amazing work!";
+            document.getElementById("update_gesture").innerHTML = "&#9996;";
         }
         
-        if(results[0].label == "Hand") {
-            document.getElementById("update_emoji").innerHTML = "&#9995;";
+        else if(prediction1 == "Hand") {
+            toSpeak = "Good job!";
+            document.getElementById("update_gesture").innerHTML = "&#9995;";
         }
+
+        speak();
     }
+}
+
+function speak() {
+    var synth = window.speechSynthesis;
+    speak_data_1 = toSpeak;
+    var utterThis = new SpeechSynthesisUtterance(speak_data_1);
+    synth.speak(utterThis);
 }
